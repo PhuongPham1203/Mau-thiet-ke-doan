@@ -38,7 +38,7 @@ public class CharacterController2D : MonoBehaviour
 	private void Awake()
 	{
 		if(instance == null){
-            instance = new CharacterController2D();
+            instance = this;
         }else{
             Destroy(gameObject);
         }

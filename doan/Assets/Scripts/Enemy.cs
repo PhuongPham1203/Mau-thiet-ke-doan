@@ -8,6 +8,10 @@ public class Enemy : MonoBehaviour {
 
 	public GameObject deathEffect;
 
+
+	//! Event
+	//public static event Action OnEnemyDie;
+
 	public void TakeDamage (int damage)
 	{
 		health -= damage;
@@ -22,6 +26,10 @@ public class Enemy : MonoBehaviour {
 	{
 		Instantiate(deathEffect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
+	}
+
+	private void OnDestroy() {
+		EventDispatcher.GetInstance().ui_EventEnemyDie.Invoke();
 	}
 
 }
