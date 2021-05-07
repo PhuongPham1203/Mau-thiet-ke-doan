@@ -30,8 +30,18 @@ public class CharacterController2D : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
+	private static CharacterController2D instance ;
+    public static CharacterController2D getInstance() {
+        return instance;
+    }
+
 	private void Awake()
 	{
+		if(instance == null){
+            instance = new CharacterController2D();
+        }else{
+            Destroy(gameObject);
+        }
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
@@ -39,6 +49,8 @@ public class CharacterController2D : MonoBehaviour
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
+
+		
 	}
 
 	private void FixedUpdate()
