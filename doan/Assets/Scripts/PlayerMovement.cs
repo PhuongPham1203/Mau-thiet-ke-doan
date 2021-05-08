@@ -67,6 +67,18 @@ public class PlayerMovement : Unit
             fireCmd.Execute(this);
         }
 
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            // * Heal
+            controller.currenthp += 10;
+            if (controller.currenthp > controller.hp)
+            {
+                controller.currenthp = controller.hp;
+            }
+            VFXFactory.getInstance().getVFX(EnumVFXAbility.Heal).Process();
+        }
+
     }
 
     public override void Jump()

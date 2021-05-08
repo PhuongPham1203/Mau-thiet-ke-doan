@@ -47923,6 +47923,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hp: 100
+  currenthp: 100
 --- !u!58 &820667355
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -78449,6 +78451,7 @@ GameObject:
   - component: {fileID: 1341794459}
   - component: {fileID: 1341794460}
   - component: {fileID: 1341794461}
+  - component: {fileID: 1341794462}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -78484,7 +78487,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 1240635167}
   coin: {fileID: 713255863}
+  hp: {fileID: 1990766254}
   ui_EventEnemyDie:
+    m_PersistentCalls:
+      m_Calls: []
+  ui_EventPlayerTakeDame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1341794461
@@ -78497,6 +78504,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: deb4af5bdc404644db221242a645c51a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1341794462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341794458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e1ec8325adf7442914e1a3ab1e4edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1342163837

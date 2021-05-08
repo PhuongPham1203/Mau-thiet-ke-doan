@@ -9,8 +9,10 @@ public class EventDispatcher : MonoBehaviour
 {
     public Text score;
     public Text coin;
+    public Image hp;
 
     public UnityEvent ui_EventEnemyDie = new UnityEvent();
+    public UnityEvent ui_EventPlayerTakeDame = new UnityEvent();
 
     #region Singleton
     // * su dung singleton 
@@ -35,6 +37,7 @@ public class EventDispatcher : MonoBehaviour
 
         this.ui_EventEnemyDie.AddListener(UpdateCoin);
         this.ui_EventEnemyDie.AddListener(UpdateScore);
+        this.ui_EventPlayerTakeDame.AddListener(UpdateHP);
     }
 
 
@@ -49,6 +52,13 @@ public class EventDispatcher : MonoBehaviour
     public void UpdateCoin()
     {
         this.coin.text = (Int64.Parse(this.coin.text) + 1).ToString();
+    }
+
+    public void UpdateHP()
+    {
+        float max = CharacterController2D.getInstance().hp;
+        float currenthp = CharacterController2D.getInstance().currenthp;
+        this.hp.fillAmount = currenthp/max; 
     }
 
     /*
