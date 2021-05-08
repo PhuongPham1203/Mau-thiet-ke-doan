@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RayCastWeapon : MonoBehaviour {
+public class RayCastWeapon : WeaponStrategy {
 
-	public Transform firePoint;
+	
 	public int damage = 40;
 	public GameObject impactEffect;
 	public LineRenderer lineRenderer;
-	
-	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown("Fire1"))
+		
+		/*if (Input.GetButtonDown("Fire1"))
 		{
-			StartCoroutine(Shoot());
+			Shoot();
 		}
+		*/
+	}
+	
+
+	public override void Shoot(){
+		//Debug.Log("RayCastWeapon");
+
+		StartCoroutine(IEnumeratorShoot());
+
 	}
 
-	IEnumerator Shoot ()
+	IEnumerator IEnumeratorShoot ()
 	{
 		RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right);
 

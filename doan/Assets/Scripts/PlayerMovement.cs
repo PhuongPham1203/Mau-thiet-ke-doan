@@ -21,8 +21,11 @@ public class PlayerMovement : Unit
     public KeyCode keySwapWeapon;
 
     private JumpCommand jumpCmd = new JumpCommand();
-    //!private FireCommand fireCmd = new FireCommand();
+    private FireCommand fireCmd = new FireCommand();
     private SwapCommand swapCmd = new SwapCommand();
+
+    public WeaponStrategy weapon;
+    public WeaponStrategy[] allWeapon;
 
     void Awake()
     {
@@ -53,10 +56,15 @@ public class PlayerMovement : Unit
         }
 
 
-		// Swap
-		if (Input.GetKeyDown(keySwapWeapon))
+        // Swap
+        if (Input.GetKeyDown(keySwapWeapon))
         {
             swapCmd.Execute(this);
+        }
+
+        if (Input.GetKeyDown(keyFire))
+        {
+            fireCmd.Execute(this);
         }
 
     }
@@ -68,7 +76,32 @@ public class PlayerMovement : Unit
     }
     public override void SwapWeapon()
     {
-        base.SwapWeapon();
+        if (this.weapon.GetInstanceID() == this.allWeapon[this.allWeapon.Length - 1].GetInstanceID())
+        {
+            this.weapon.enabled = false;
+            this.weapon = this.allWeapon[0];
+            this.weapon.enabled = true;
+
+            return;
+        }
+        //base.SwapWeapon();
+        for (int i = 0; i < this.allWeapon.Length; i++)
+        {
+
+            if (this.allWeapon[i].GetInstanceID() == this.weapon.GetInstanceID())
+            {
+                this.weapon.enabled = false;
+                this.weapon = this.allWeapon[i + 1];
+                this.weapon.enabled = true;
+
+                break;
+            }
+        }
+    }
+    public override void Fire()
+    {
+        //Debug.Log("fire");
+        this.weapon.Shoot();
     }
 
     public void OnLanding()
