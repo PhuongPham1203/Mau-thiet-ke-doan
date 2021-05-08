@@ -38,15 +38,7 @@ public class EventDispatcher : MonoBehaviour
     }
 
 
-    void OnDestroy()
-    {
-        // reset this static var to null if it's the singleton instance
-        if (s_instance == this)
-        {
-            //ClearAllListener();
-            s_instance = null;
-        }
-    }
+    
     #endregion
 
     public void UpdateScore()

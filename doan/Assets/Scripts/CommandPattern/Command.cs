@@ -2,17 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Command : MonoBehaviour
+public abstract class Command
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public abstract void Execute(Unit unit);
 
-    // Update is called once per frame
-    void Update()
+}
+public class JumpCommand : Command
+{
+    public override void Execute(Unit unit)
     {
-        
+        unit.Jump();
     }
 }
+
+public class FireCommand : Command
+{
+    public override void Execute(Unit unit)
+    {
+        unit.Fire();
+    }
+}
+public class SwapCommand : Command
+{
+    public override void Execute(Unit unit)
+    {
+        unit.SwapWeapon();
+    }
+}
+
