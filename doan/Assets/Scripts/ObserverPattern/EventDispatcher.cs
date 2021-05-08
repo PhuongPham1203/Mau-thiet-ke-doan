@@ -13,6 +13,9 @@ public class EventDispatcher : MonoBehaviour
 
     public UnityEvent ui_EventEnemyDie = new UnityEvent();
     public UnityEvent ui_EventPlayerTakeDame = new UnityEvent();
+    public UnityEvent ui_EventPlayerUpdateAll = new UnityEvent();
+
+
 
     #region Singleton
     // * su dung singleton 
@@ -35,23 +38,41 @@ public class EventDispatcher : MonoBehaviour
             Destroy(gameObject);
         }
 
-        this.ui_EventEnemyDie.AddListener(UpdateCoin);
-        this.ui_EventEnemyDie.AddListener(UpdateScore);
+        this.ui_EventEnemyDie.AddListener(AddScore);
+        this.ui_EventEnemyDie.AddListener(AddCoin);
         this.ui_EventPlayerTakeDame.AddListener(UpdateHP);
+
+        this.ui_EventPlayerUpdateAll.AddListener(UpdateCoin);
+        this.ui_EventPlayerUpdateAll.AddListener(UpdateScore);
+        this.ui_EventPlayerUpdateAll.AddListener(UpdateHP);
     }
 
 
     
     #endregion
 
+    public void AddScore()
+    {
+
+        CharacterController2D.getInstance().score+=10;
+        this.score.text = CharacterController2D.getInstance().score.ToString();
+    }
+
+    public void AddCoin()
+    {
+        CharacterController2D.getInstance().money+=10;
+        this.coin.text = CharacterController2D.getInstance().money.ToString();
+    }
+
     public void UpdateScore()
     {
-        this.score.text = (Int64.Parse(this.score.text) + 10).ToString();
+        //this.score.text = (Int64.Parse(this.score.text) + 10).ToString();
+        this.score.text = CharacterController2D.getInstance().score.ToString();
     }
 
     public void UpdateCoin()
     {
-        this.coin.text = (Int64.Parse(this.coin.text) + 1).ToString();
+        this.coin.text = CharacterController2D.getInstance().money.ToString();
     }
 
     public void UpdateHP()

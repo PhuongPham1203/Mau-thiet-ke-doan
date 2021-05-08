@@ -31,9 +31,14 @@ public class CharacterController2D : MonoBehaviour
 
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
+
     [Header("stat")]
     public float hp = 100f;
     public float currenthp = 100f;
+    public int money;
+    public int score;
+    public CareTaker careTaker;
+    public Stat statPlayer;
 
     private static CharacterController2D instance;
     public static CharacterController2D getInstance()
@@ -59,6 +64,21 @@ public class CharacterController2D : MonoBehaviour
         if (OnCrouchEvent == null)
             OnCrouchEvent = new BoolEvent();
 
+
+    }
+
+    private void Start()
+    {
+		// * lay du lieu tu data
+		this.currenthp = statPlayer.hp;
+		this.money = statPlayer.money;
+		this.score = statPlayer.score;
+        EventDispatcher.GetInstance().ui_EventPlayerUpdateAll.Invoke();
+
+
+		// * Luu tam
+        careTaker = new CareTaker();
+        careTaker.LevelMarker = this.CreateMarker(this.currenthp,this.money,this.score,this.transform.position);
 
     }
     private void Update()
@@ -184,10 +204,54 @@ public class CharacterController2D : MonoBehaviour
         if (this.currenthp <= 0)
         {
             Debug.Log("Player Die");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-
+			this.RestoreLevel(this.careTaker.LevelMarker);
         }
 
     }
+
+    // * Memento
+    public Memento CreateMarker(float hp, int money, int score,Vector3 pos)
+    {
+        return new Memento(hp, money, score,pos);
+    }
+
+    public void RestoreLevel(Memento playerMemento)
+    {
+        this.currenthp = playerMemento.hp;
+        this.money = playerMemento.money;
+        this.score = playerMemento.score;
+        this.transform.position = playerMemento.posTemp;
+
+        EventDispatcher.GetInstance().ui_EventPlayerUpdateAll.Invoke();
+
+    }
+
+
+
+
+}
+
+//'Memento' class
+public class Memento
+{
+    public float hp;
+    public int money;
+    public int score;
+	public Vector3 posTemp;
+
+    public Memento(float hp, int money, int score,Vector3 pos)
+    {
+        this.hp = hp;
+        this.money = money;
+        this.score = score;
+		this.posTemp = pos;
+    }
+}
+//'CareTaker' class
+public class CareTaker
+{
+    // save check point before go to next level
+    public Memento LevelMarker;
 }

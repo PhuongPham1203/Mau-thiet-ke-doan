@@ -9,7 +9,11 @@ public class Restart : MonoBehaviour
     {
         if (other.gameObject.layer == 8)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            CharacterController2D.getInstance().RestoreLevel(CharacterController2D.getInstance().careTaker.LevelMarker);
+
+             
         }
     }
 }
