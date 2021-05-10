@@ -36,6 +36,10 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.layer == 8){
+            other.gameObject.GetComponent<CharacterController2D>().TakeDamage(20);
+        }
+    }
 }
 

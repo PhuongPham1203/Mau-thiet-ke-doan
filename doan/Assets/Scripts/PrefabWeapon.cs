@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PrefabWeapon : WeaponStrategy {
 
-	
+	public Transform firePoint;
 	public GameObject bulletPrefab;
 	
 	// Update is called once per frame

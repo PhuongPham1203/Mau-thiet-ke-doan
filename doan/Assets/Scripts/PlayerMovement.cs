@@ -26,6 +26,7 @@ public class PlayerMovement : Unit
 
     public WeaponStrategy weapon;
     public WeaponStrategy[] allWeapon;
+    
 
     void Awake()
     {

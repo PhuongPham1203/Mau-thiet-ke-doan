@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RayCastWeapon : WeaponStrategy {
 
-	
+	public Transform firePoint;
 	public int damage = 40;
 	public GameObject impactEffect;
 	public LineRenderer lineRenderer;
