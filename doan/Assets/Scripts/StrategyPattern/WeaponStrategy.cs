@@ -5,15 +5,6 @@ using UnityEngine;
 public class WeaponStrategy : MonoBehaviour,IWeaponStrategy
 {
 
-    
-    /*
-    void Update () {
-		if (Input.GetButtonDown("Fire1"))
-		{
-			Shoot();
-		}
-	}
-    */
     public virtual void Shoot(){
 
     }

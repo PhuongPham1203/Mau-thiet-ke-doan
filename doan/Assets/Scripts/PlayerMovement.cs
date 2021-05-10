@@ -25,7 +25,7 @@ public class PlayerMovement : Unit
     private SwapCommand swapCmd = new SwapCommand();
 
     public WeaponStrategy weapon;
-    public WeaponStrategy[] allWeapon;
+    public List<WeaponStrategy> allWeapon;
     
 
     void Awake()
@@ -89,7 +89,7 @@ public class PlayerMovement : Unit
     }
     public override void SwapWeapon()
     {
-        if (this.weapon.GetInstanceID() == this.allWeapon[this.allWeapon.Length - 1].GetInstanceID())
+        if (this.weapon.GetInstanceID() == this.allWeapon[this.allWeapon.Count - 1].GetInstanceID())
         {
             this.weapon.enabled = false;
             this.weapon = this.allWeapon[0];
@@ -98,7 +98,7 @@ public class PlayerMovement : Unit
             return;
         }
         //base.SwapWeapon();
-        for (int i = 0; i < this.allWeapon.Length; i++)
+        for (int i = 0; i < this.allWeapon.Count; i++)
         {
 
             if (this.allWeapon[i].GetInstanceID() == this.weapon.GetInstanceID())
