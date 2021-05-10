@@ -10,12 +10,7 @@ public class BossController : Enemy
         this.objectPoolFireworks = ObjectPoolFireworks.Instance;
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            //this.Die();
-        }
-    }
+    
 
     public override void Die()
     {

@@ -14,6 +14,7 @@ public class CuaController : Enemy
         InvokeRepeating("UnDie2s", 1.0f, 2f);
 
     }
+    
 
     public void UnDie2s()
     {

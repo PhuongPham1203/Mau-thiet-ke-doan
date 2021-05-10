@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5803826634063379323}
   - component: {fileID: 1855856309713542754}
   m_Layer: 0
-  m_Name: octopus rainbow
+  m_Name: octopus rainbow old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,6 +145,10 @@ MonoBehaviour:
   health: 200
   deathEffect: {fileID: 1755349173569476, guid: 3c45864be6a059a4a82a25e285298338,
     type: 3}
+  stateEnemy: 0
+  range: 10
+  goRight: 1
+  speed: 5
 --- !u!114 &1855856309713542754
 MonoBehaviour:
   m_ObjectHideFlags: 0
