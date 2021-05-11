@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-
+    // * Enemy.cs
     public virtual void Die()
     {
 		EventDispatcher.GetInstance().ui_EventEnemyDie.Invoke();

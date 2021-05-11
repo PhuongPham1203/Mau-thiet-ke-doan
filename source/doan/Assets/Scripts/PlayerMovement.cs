@@ -13,16 +13,17 @@ public class PlayerMovement : Unit
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
-
+    
+    // * PlayerMovement.cs
     // * Input Controller - Command Pattern
     //public Unit unitControl;
     public KeyCode keyJump;
     public KeyCode keyFire;
     public KeyCode keySwapWeapon;
 
-    private JumpCommand jumpCmd = new JumpCommand();
-    private FireCommand fireCmd = new FireCommand();
-    private SwapCommand swapCmd = new SwapCommand();
+    private Command jumpCmd = new JumpCommand();
+    private Command fireCmd = new FireCommand();
+    private Command swapCmd = new SwapCommand();
 
     public WeaponStrategy weapon;
     public List<WeaponStrategy> allWeapon;

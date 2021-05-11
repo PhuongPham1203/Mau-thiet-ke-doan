@@ -56,6 +56,7 @@ public class CharacterController2D : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
         if (OnLandEvent == null)
@@ -191,7 +192,7 @@ public class CharacterController2D : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-
+    // * CharacterController2D.cs
     public void TakeDamage(float dame)
     {
         this.currenthp -= dame;
