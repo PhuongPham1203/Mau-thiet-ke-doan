@@ -19,10 +19,7 @@ public class RayCastWeapon : WeaponStrategy {
 	
 
 	public override void Shoot(){
-		//Debug.Log("RayCastWeapon");
-
 		StartCoroutine(IEnumeratorShoot());
-
 	}
 
 	IEnumerator IEnumeratorShoot ()

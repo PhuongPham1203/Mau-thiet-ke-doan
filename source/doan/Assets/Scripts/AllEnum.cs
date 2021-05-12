@@ -12,3 +12,4 @@ public class AllEnum : MonoBehaviour
 public enum StateEnemy{Idle,UnDie}
 
 public enum EnumVFXAbility{Heal,Dame}
+    

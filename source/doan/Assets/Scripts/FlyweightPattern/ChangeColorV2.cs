@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChangeColorV2 : MonoBehaviour
 {
     private Renderer renderer;
-    private SoldierFactoryColor soldierFactoryColor;
+    private MaterialPropertyBlock materialPropertyBlock;
     void Awake()
     {
         this.renderer = GetComponent<SpriteRenderer>();
@@ -14,7 +14,7 @@ public class ChangeColorV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.soldierFactoryColor = SoldierFactoryColor.getInstance();
+        this.materialPropertyBlock = new MaterialPropertyBlock();
     }
 
     // Update is called once per frame
@@ -25,11 +25,13 @@ public class ChangeColorV2 : MonoBehaviour
 
     public void ChangeColorObj()
     {
-        //this.renderer.material.color = GetRandomColor();
-        // Debug.Log(this.renderer.material.color.ToString());
-        //this.renderer.GetPropertyBlock(materialPropertyBlock);
-        this.renderer.material.color = soldierFactoryColor.createSoldierColor(GetRandomColor());
-        //Debug.Log(this.soldierFactoryColor.name);
+        // * Lấy giá trị hiện tại của material property 
+        this.renderer.GetPropertyBlock(this.materialPropertyBlock);
+        // * tạo ra giá trị mới
+        this.materialPropertyBlock.SetColor("_Color",GetRandomColor());
+        // * Lấy giá trị và cài vào renderer
+        this.renderer.SetPropertyBlock(this.materialPropertyBlock);
+        
     }
 
     private Color GetRandomColor()

@@ -13,7 +13,7 @@ public class PlayerMovement : Unit
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
-    
+
     // * PlayerMovement.cs
     // * Input Controller - Command Pattern
     //public Unit unitControl;
@@ -25,9 +25,10 @@ public class PlayerMovement : Unit
     private Command fireCmd = new FireCommand();
     private Command swapCmd = new SwapCommand();
 
+    // * PlayerMovement.cs Weapon
     public WeaponStrategy weapon;
     public List<WeaponStrategy> allWeapon;
-    
+
 
     void Awake()
     {
@@ -73,14 +74,18 @@ public class PlayerMovement : Unit
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             // * Heal
-            controller.currenthp += 10;
-            if (controller.currenthp > controller.hp)
-            {
-                controller.currenthp = controller.hp;
-            }
-            VFXFactory.getInstance().getVFX(EnumVFXAbility.Heal).Process();
+            this.Heal();
         }
 
+    }
+    public void Heal()
+    {
+        controller.currenthp += 10;
+        if (controller.currenthp > controller.hp)
+        {
+            controller.currenthp = controller.hp;
+        }
+        VFXFactory.getInstance().getVFX(EnumVFXAbility.Heal).Process();
     }
 
     public override void Jump()
