@@ -9,7 +9,6 @@ public class Client {
         System.out.println("Log level Console");
         //logger.log(LogLevel.INFO, "Info message");
         logger.log(LogLevel.DEBUG, "Debug message");
-        //logger.log(LogLevel.WARNING, "Debug message");
  
         // * thử log ở mức độ Error
         System.out.println("----\nLog level Error - loi");
